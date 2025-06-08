@@ -151,10 +151,10 @@ Here's a basic example of how to use the components of this library:
 
 ## Additional Information
 
-* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `YOUR_GITHUB_REPO_URL/issues` (TODO: Replace with your actual URL).
-* **Contributing**: Contributions are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
+* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `https://github.com/Edwin-sh/flutter_responsive_ui/issues`.
+* **Contributing**: Contributions are welcome! Please feel free to fork the repository (`https://github.com/Edwin-sh/flutter_responsive_ui`), make your changes, and submit a pull request.
 * **License**: This package is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-Remember to replace `YOUR_GITHUB_REPO_URL` with the actual URL of your GitHub repository once you create it.
+This library is proudly hosted on GitHub: [https://github.com/Edwin-sh/flutter_responsive_ui](https://github.com/Edwin-sh/flutter_responsive_ui)

@@ -1,0 +1,160 @@
+# flutter_responsive_ui
+
+A Flutter library for creating responsive and adaptive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop. It internally uses the `sizer` package for screen measurements, but this is handled by the library, so you don't need to interact with `sizer` directly.
+
+## Features
+
+* **ResponsiveLayoutBuilder**: A widget that allows you to define different layouts for various screen breakpoints (e.g., mobile, tablet, desktop).
+* **ResponsiveContextExtension**: Convenient extension methods on `BuildContext` for easily checking the current screen size category (e.g., `context.isMobile`, `context.isTablet`).
+* **ResponsiveGridService**: A service that provides dynamic spacing values like margins and gutters based on the current screen type. It is managed via `ResponsiveScreenTypeProvider`.
+* **ResponsiveScreenTypeProvider**: Initializes screen type detection. **This widget handles `Sizer` initialization internally.** Wrap your `MaterialApp`'s parent or the root of your application with this provider.
+* **ResponsiveText**: A text widget that automatically adjusts its `TextStyle` based on the current screen size, ensuring readability across devices.
+* **ResponsiveTextStyle**: A class to define different text styles for various screen breakpoints.
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have Flutter installed on your system.
+
+### Installation
+
+Add `flutter_responsive_ui` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter_responsive_ui: ^0.0.1 # Replace with the latest version
+  # The sizer package is a dependency of flutter_responsive_ui and will be included automatically.
+```
+
+Then, run `flutter pub get` in your terminal.
+
+## Usage
+
+Here's a basic example of how to use the components of this library:
+
+1. **Wrap your MaterialApp with `ResponsiveScreenTypeProvider`**:
+    To enable screen type detection and make responsive grid values available, wrap your `MaterialApp` (or the relevant part of your widget tree) with `ResponsiveScreenTypeProvider`. This provider initializes `Sizer` internally.
+
+    ```dart
+    // main.dart
+    import 'package:flutter/material.dart';
+    // Assuming your main library file will be flutter_responsive_ui.dart
+    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart'; 
+
+    void main() {
+      runApp(MyApp());
+    }
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        // Wrap your app with ResponsiveScreenTypeProvider.
+        // This handles Sizer initialization internally.
+        return ResponsiveScreenTypeProvider(
+          builder: (context, orientation, screenType) {
+            // You now have access to orientation and screenType.
+            // responsiveGridService is automatically updated with screenType.
+            return MaterialApp(
+              title: 'Flutter Responsive UI Demo',
+              home: MyHomePage(),
+            );
+          },
+        );
+      }
+    }
+    ```
+
+2. **Use `ResponsiveLayoutBuilder` for different layouts**:
+
+    ```dart
+    // my_home_page.dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+
+    class MyHomePage extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: ResponsiveText(
+              text: 'Responsive App',
+              style: ResponsiveTextStyle(
+                mobile: TextStyle(fontSize: 18),
+                tablet: TextStyle(fontSize: 22),
+                desktop: TextStyle(fontSize: 26),
+              ),
+            ),
+          ),
+          body: ResponsiveLayoutBuilder(
+            mobile: Center(child: Text('Mobile Layout: ${context.screenWidth.toStringAsFixed(2)}w')),
+            tablet: Center(child: Text('Tablet Layout (or mobileLarge if defined): ${context.screenWidth.toStringAsFixed(2)}w')),
+            desktop: Center(child: Text('Desktop Layout: ${context.screenWidth.toStringAsFixed(2)}w')),
+          ),
+        );
+      }
+    }
+    ```
+
+3. **Use `ResponsiveText` for adaptive text**:
+
+    You can define custom `TextStyle` objects for each breakpoint or leverage your existing `ThemeData`.
+
+    ```dart
+    // my_content_widget.dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+
+    class MyContent extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        final textTheme = Theme.of(context).textTheme;
+
+        // Example 1: Using custom TextStyles
+        final customResponsiveStyle = ResponsiveTextStyle(
+          mobile: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
+          tablet: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.green),
+          desktop: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.red),
+        );
+
+        // Example 2: Using TextStyles from the current Theme
+        final themeBasedResponsiveStyle = ResponsiveTextStyle(
+          mobile: textTheme.bodyMedium, // Or any other style like headlineSmall, titleLarge etc.
+          tablet: textTheme.bodyLarge,
+          desktop: textTheme.headlineMedium, // Example: larger style for desktop
+        );
+
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ResponsiveText(
+              text: 'Custom Styled Text!',
+              style: customResponsiveStyle,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: responsiveGridService.s), // Using responsive spacing
+            ResponsiveText(
+              text: 'Theme Based Text!',
+              style: themeBasedResponsiveStyle,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: responsiveGridService.m), // Using responsive spacing
+            Text('Current screen category: ${context.screenCategory}'),
+            Text('Responsive margin: ${responsiveGridService.margin}'),
+          ],
+        );
+      }
+    }
+    ```
+
+    Ensure `MyContent` is a descendant of `ResponsiveScreenTypeProvider` to use `responsiveGridService` and `context.screenCategory`.
+
+## Additional Information
+
+* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `YOUR_GITHUB_REPO_URL/issues` (TODO: Replace with your actual URL).
+* **Contributing**: Contributions are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
+* **License**: This package is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+Remember to replace `YOUR_GITHUB_REPO_URL` with the actual URL of your GitHub repository once you create it.

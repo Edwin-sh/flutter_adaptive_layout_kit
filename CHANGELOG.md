@@ -1,6 +1,6 @@
 ## 0.0.1
 
-* Initial release of `flutter_responsive_ui`.
+* Initial release of `flutter_adaptive_layout_kit`.
 * Clarified that `ResponsiveScreenTypeProvider` handles `Sizer` initialization internally.
 * Includes `ResponsiveLayoutBuilder` for adaptive layouts based on screen size.
 * Provides `ResponsiveContextExtension` for easy screen size checks.

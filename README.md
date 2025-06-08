@@ -1,6 +1,6 @@
-# flutter_responsive_ui
+# flutter_adaptive_layout_kit
 
-A Flutter library for creating responsive and adaptive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop. It internally uses the `sizer` package for screen measurements, but this is handled by the library, so you don't need to interact with `sizer` directly.
+A Flutter library for creating adaptive layouts and responsive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop. It internally uses the `sizer` package for screen measurements, but this is handled by the library, so you don't need to interact with `sizer` directly.
 
 ## Features
 
@@ -19,12 +19,12 @@ Ensure you have Flutter installed on your system.
 
 ### Installation
 
-Add `flutter_responsive_ui` to your `pubspec.yaml` file:
+Add `flutter_adaptive_layout_kit` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_responsive_ui: ^0.0.1 # Replace with the latest version
-  # The sizer package is a dependency of flutter_responsive_ui and will be included automatically.
+  flutter_adaptive_layout_kit: ^0.0.1 # Replace with the latest version
+  # The sizer package is a dependency of flutter_adaptive_layout_kit and will be included automatically.
 ```
 
 Then, run `flutter pub get` in your terminal.
@@ -39,8 +39,8 @@ Here's a basic example of how to use the components of this library:
     ```dart
     // main.dart
     import 'package:flutter/material.dart';
-    // Assuming your main library file will be flutter_responsive_ui.dart
-    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart'; 
+    // Assuming your main library file will be flutter_adaptive_layout_kit.dart
+    import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart'; 
 
     void main() {
       runApp(MyApp());
@@ -70,7 +70,7 @@ Here's a basic example of how to use the components of this library:
     ```dart
     // my_home_page.dart
     import 'package:flutter/material.dart';
-    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+    import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
     class MyHomePage extends StatelessWidget {
       @override
@@ -103,7 +103,7 @@ Here's a basic example of how to use the components of this library:
     ```dart
     // my_content_widget.dart
     import 'package:flutter/material.dart';
-    import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+    import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
     class MyContent extends StatelessWidget {
       @override
@@ -151,10 +151,10 @@ Here's a basic example of how to use the components of this library:
 
 ## Additional Information
 
-* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `https://github.com/Edwin-sh/flutter_responsive_ui/issues`.
-* **Contributing**: Contributions are welcome! Please feel free to fork the repository (`https://github.com/Edwin-sh/flutter_responsive_ui`), make your changes, and submit a pull request.
+* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `https://github.com/Edwin-sh/flutter_adaptive_layout_kit/issues`.
+* **Contributing**: Contributions are welcome! Please feel free to fork the repository (`https://github.com/Edwin-sh/flutter_adaptive_layout_kit`), make your changes, and submit a pull request.
 * **License**: This package is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-This library is proudly hosted on GitHub: [https://github.com/Edwin-sh/flutter_responsive_ui](https://github.com/Edwin-sh/flutter_responsive_ui)
+This library is proudly hosted on GitHub: [https://github.com/Edwin-sh/flutter_adaptive_layout_kit](https://github.com/Edwin-sh/flutter_adaptive_layout_kit)

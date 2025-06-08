@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/responsive.dart'; // Assuming this provides ResponsiveContextExtension
+import 'package:flutter_adaptive_layout_kit/responsive.dart'; // Updated import
 
 /// Defines a set of [TextStyle]s for different screen sizes.
 ///

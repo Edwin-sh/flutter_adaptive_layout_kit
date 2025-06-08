@@ -1,9 +1,9 @@
-name: flutter_responsive_ui
-description: "A Flutter package for building responsive and adaptive UIs with ease. Provides utilities for responsive layouts, text, and grid systems. Internally uses the sizer package for screen measurements, which is managed by the library."
+name: flutter_adaptive_layout_kit
+description: "A Flutter package for building adaptive layouts and responsive UIs with ease. Provides utilities for adaptive layouts, text, and grid systems. Internally uses the sizer package for screen measurements, which is managed by the library."
 version: 0.0.1
-homepage: https://github.com/Edwin-sh/flutter_responsive_ui
-repository: https://github.com/Edwin-sh/flutter_responsive_ui
-issue_tracker: https://github.com/Edwin-sh/flutter_responsive_ui/issues
+homepage: https://github.com/Edwin-sh/flutter_adaptive_layout_kit
+repository: https://github.com/Edwin-sh/flutter_adaptive_layout_kit
+issue_tracker: https://github.com/Edwin-sh/flutter_adaptive_layout_kit/issues
 
 environment:
   sdk: ^3.7.2 # Ensure this is compatible with your Flutter version and sizer

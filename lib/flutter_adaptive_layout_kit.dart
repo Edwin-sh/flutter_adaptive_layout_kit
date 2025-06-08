@@ -1,4 +1,4 @@
-/// A Flutter library for creating responsive and adaptive UIs with ease.
+/// A Flutter library for creating adaptive layouts and responsive UIs with ease.
 ///
 /// This library provides widgets and utilities to adapt your layouts
 /// and styles to different screen sizes (mobile, tablet, desktop).
@@ -19,7 +19,7 @@
 /// initialization for screen type detection. Then, you can use
 /// [ResponsiveLayoutBuilder] for layout changes, [responsiveGridService] for dynamic spacing,
 /// and [ResponsiveText] for adaptive text throughout your application.
-library flutter_responsive_ui; // Changed from flutter_adaptive_sizer
+library flutter_adaptive_layout_kit;
 
 // Layout builders and screen utilities
 export 'responsive.dart';

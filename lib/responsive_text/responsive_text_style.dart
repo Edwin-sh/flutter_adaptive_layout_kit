@@ -36,7 +36,7 @@ class ResponsiveTextStyle {
       case ScreenType.desktop:
         return _desktop;
       case null:
-        return _mobile;
+        return _mobile; // Default to mobile style if screen type is not set
     }
   }
 }

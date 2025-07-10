@@ -14,7 +14,7 @@ class ResponsiveText extends StatelessWidget {
   final Locale? _locale;
   final bool? _softWrap;
   final TextOverflow? _overflow;
-  final double? _textScaleFactor;
+  final TextScaler? _textScaler;
   final int? _maxLines;
   final String? _semanticsLabel;
   final TextWidthBasis? _textWidthBasis;
@@ -46,7 +46,7 @@ class ResponsiveText extends StatelessWidget {
     Locale? locale,
     bool? softWrap,
     TextOverflow? overflow,
-    double? textScaleFactor,
+    TextScaler? textScaler,
     int? maxLines,
     String? semanticsLabel,
     TextWidthBasis? textWidthBasis,
@@ -59,7 +59,7 @@ class ResponsiveText extends StatelessWidget {
         _locale = locale,
         _softWrap = softWrap,
         _overflow = overflow,
-        _textScaleFactor = textScaleFactor,
+        _textScaler = textScaler,
         _maxLines = maxLines,
         _semanticsLabel = semanticsLabel,
         _textWidthBasis = textWidthBasis,
@@ -71,12 +71,12 @@ class ResponsiveText extends StatelessWidget {
     return Text(
       _text,
       textAlign: _textAlign,
-      style: _style.getResponsiveTextStyle(context),
+      style: _style.getResponsiveTextStyle(),
       textDirection: _textDirection,
       locale: _locale,
       softWrap: _softWrap,
       overflow: _overflow,
-      textScaleFactor: _textScaleFactor,
+      textScaler: _textScaler,
       maxLines: _maxLines,
       semanticsLabel: _semanticsLabel,
       textWidthBasis: _textWidthBasis,

@@ -1,15 +1,14 @@
 # flutter_adaptive_layout_kit
 
-A Flutter library for creating adaptive layouts and responsive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop. It internally uses the `sizer` package for screen measurements, but this is handled by the library, so you don't need to interact with `sizer` directly.
+A Flutter library for creating adaptive layouts and responsive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop. It internally uses the `sizer` package for screen measurements, which is managed by the library.
 
 ## Features
 
-* **ResponsiveLayoutBuilder**: A widget that allows you to define different layouts for various screen breakpoints (e.g., mobile, tablet, desktop).
-* **ResponsiveContextExtension**: Convenient extension methods on `BuildContext` for easily checking the current screen size category (e.g., `context.isMobile`, `context.isTablet`).
-* **ResponsiveGridService**: A service that provides dynamic spacing values like margins and gutters based on the current screen type. It is managed via `ResponsiveScreenTypeProvider`.
-* **ResponsiveScreenTypeProvider**: Initializes screen type detection. **This widget handles `Sizer` initialization internally.** Wrap your `MaterialApp`'s parent or the root of your application with this provider.
-* **ResponsiveText**: A text widget that automatically adjusts its `TextStyle` based on the current screen size, ensuring readability across devices.
-* **ResponsiveTextStyle**: A class to define different text styles for various screen breakpoints.
+*   **ResponsiveLayoutBuilder**: A widget that allows you to define different layouts for various screen breakpoints (e.g., mobile, tablet, desktop).
+*   **ResponsiveGridService**: A singleton service, accessible via `responsiveGridService`, that provides dynamic spacing values like margins and gutters based on the current screen type detected by `sizer`.
+*   **ResponsiveScreenInitializer**: Initializes screen type detection using the `sizer` package. Wrap your `MaterialApp` with this widget.
+*   **ResponsiveText**: A text widget that automatically adjusts its `TextStyle` based on the current screen size, ensuring readability across devices.
+*   **ResponsiveTextStyle**: A class to define different text styles for various screen breakpoints.
 
 ## Getting Started
 
@@ -23,7 +22,7 @@ Add `flutter_adaptive_layout_kit` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_adaptive_layout_kit: ^0.0.1 # Replace with the latest version
+  flutter_adaptive_layout_kit: ^0.0.2 # Replace with the latest version
   # The sizer package is a dependency of flutter_adaptive_layout_kit and will be included automatically.
 ```
 
@@ -33,13 +32,12 @@ Then, run `flutter pub get` in your terminal.
 
 Here's a basic example of how to use the components of this library:
 
-1. **Wrap your MaterialApp with `ResponsiveScreenTypeProvider`**:
-    To enable screen type detection and make responsive grid values available, wrap your `MaterialApp` (or the relevant part of your widget tree) with `ResponsiveScreenTypeProvider`. This provider initializes `Sizer` internally.
+1.  **Wrap your MaterialApp with `ResponsiveScreenInitializer`**:
+    To enable screen type detection and make responsive grid values available, wrap your `MaterialApp` with `ResponsiveScreenInitializer`. This widget handles the initialization of `sizer`.
 
     ```dart
     // main.dart
     import 'package:flutter/material.dart';
-    // Assuming your main library file will be flutter_adaptive_layout_kit.dart
     import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart'; 
 
     void main() {
@@ -49,12 +47,10 @@ Here's a basic example of how to use the components of this library:
     class MyApp extends StatelessWidget {
       @override
       Widget build(BuildContext context) {
-        // Wrap your app with ResponsiveScreenTypeProvider.
-        // This handles Sizer initialization internally.
-        return ResponsiveScreenTypeProvider(
+        // Wrap your app with ResponsiveScreenInitializer.
+        return ResponsiveScreenInitializer(
           builder: (context, orientation, screenType) {
-            // You now have access to orientation and screenType.
-            // responsiveGridService is automatically updated with screenType.
+            // You can now use responsive widgets anywhere in your app.
             return MaterialApp(
               title: 'Flutter Responsive UI Demo',
               home: MyHomePage(),
@@ -65,7 +61,9 @@ Here's a basic example of how to use the components of this library:
     }
     ```
 
-2. **Use `ResponsiveLayoutBuilder` for different layouts**:
+2.  **Use `ResponsiveLayoutBuilder` for different layouts**:
+
+    `ResponsiveLayoutBuilder` automatically listens to screen size changes and rebuilds with the appropriate layout.
 
     ```dart
     // my_home_page.dart
@@ -87,18 +85,18 @@ Here's a basic example of how to use the components of this library:
             ),
           ),
           body: ResponsiveLayoutBuilder(
-            mobile: Center(child: Text('Mobile Layout: ${context.screenWidth.toStringAsFixed(2)}w')),
-            tablet: Center(child: Text('Tablet Layout (or mobileLarge if defined): ${context.screenWidth.toStringAsFixed(2)}w')),
-            desktop: Center(child: Text('Desktop Layout: ${context.screenWidth.toStringAsFixed(2)}w')),
+            mobile: Center(child: Text('Mobile Layout')),
+            tablet: Center(child: Text('Tablet Layout')),
+            desktop: Center(child: Text('Desktop Layout')),
           ),
         );
       }
     }
     ```
 
-3. **Use `ResponsiveText` for adaptive text**:
+3.  **Use `ResponsiveText` and `responsiveGridService`**:
 
-    You can define custom `TextStyle` objects for each breakpoint or leverage your existing `ThemeData`.
+    You can access responsive spacing values and other properties directly from the `responsiveGridService` singleton anywhere in your app.
 
     ```dart
     // my_content_widget.dart
@@ -119,9 +117,9 @@ Here's a basic example of how to use the components of this library:
 
         // Example 2: Using TextStyles from the current Theme
         final themeBasedResponsiveStyle = ResponsiveTextStyle(
-          mobile: textTheme.bodyMedium, // Or any other style like headlineSmall, titleLarge etc.
+          mobile: textTheme.bodyMedium,
           tablet: textTheme.bodyLarge,
-          desktop: textTheme.headlineMedium, // Example: larger style for desktop
+          desktop: textTheme.headlineMedium,
         );
 
         return Column(
@@ -139,7 +137,6 @@ Here's a basic example of how to use the components of this library:
               textAlign: TextAlign.center,
             ),
             SizedBox(height: responsiveGridService.m), // Using responsive spacing
-            Text('Current screen category: ${context.screenCategory}'),
             Text('Responsive margin: ${responsiveGridService.margin}'),
           ],
         );
@@ -147,13 +144,13 @@ Here's a basic example of how to use the components of this library:
     }
     ```
 
-    Ensure `MyContent` is a descendant of `ResponsiveScreenTypeProvider` to use `responsiveGridService` and `context.screenCategory`.
+    Ensure `MyContent` is a descendant of `ResponsiveScreenInitializer` to use `responsiveGridService`.
 
 ## Additional Information
 
-* **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `https://github.com/Edwin-sh/flutter_adaptive_layout_kit/issues`.
-* **Contributing**: Contributions are welcome! Please feel free to fork the repository (`https://github.com/Edwin-sh/flutter_adaptive_layout_kit`), make your changes, and submit a pull request.
-* **License**: This package is licensed under the MIT License. See the `LICENSE` file for details.
+*   **Issue Tracker**: If you find any bugs or have feature requests, please file an issue at `https://github.com/Edwin-sh/flutter_adaptive_layout_kit/issues`.
+*   **Contributing**: Contributions are welcome! Please feel free to fork the repository (`https://github.com/Edwin-sh/flutter_adaptive_layout_kit`), make your changes, and submit a pull request.
+*   **License**: This package is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 

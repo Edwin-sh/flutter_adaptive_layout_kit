@@ -1,3 +1,11 @@
+## 0.0.2
+
+* **Breaking Change**: Refactored the API to centralize screen type logic in `ResponsiveGridService`.
+* Removed `ResponsiveContextExtension`. Screen type checks like `context.isMobile` are no longer available.
+* Introduced `ResponsiveScreenInitializer` to be placed at the root of the app. This widget initializes the `sizer` package and updates the `responsiveGridService`.
+* `ResponsiveGridService` is now a singleton instance that can be accessed globally via `responsiveGridService`.
+* `ResponsiveLayoutBuilder` and `ResponsiveText` now use the `responsiveGridService` to determine the screen type.
+
 ## 0.0.1
 
 * Initial release of `flutter_adaptive_layout_kit`.

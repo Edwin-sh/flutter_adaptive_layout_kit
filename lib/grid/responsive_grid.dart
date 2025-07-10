@@ -1,30 +1,27 @@
 import 'package:flutter/widgets.dart';
 import 'package:sizer/sizer.dart';
-import '../responsive.dart'; // Assuming this contains desktopBreakpointConstant
+import '../responsive.dart'; 
 import '_grid_constants.dart';
 
-/// Service to manage and provide responsive grid values.
-///
-/// This service should be initialized with the current [ScreenType]
-/// via [setScreenType] (typically by [ResponsiveScreenTypeProvider])
-/// to provide appropriate values for margins, gutters, and sizes.
+/// A singleton instance of [ResponsiveGridService] for easy access to responsive values.
 ResponsiveGridService responsiveGridService = ResponsiveGridService();
 
-/// A utility class that provides responsive design values
-/// based on the current screen type (mobile, tablet, desktop).
+/// A service that provides responsive design values based on the current screen type.
+///
+/// This service centralizes the logic for providing corresponding values for margins,
+/// gutters, and other layout properties based on the [ScreenType] from the `sizer` package.
 class ResponsiveGridService {
-  ResponsiveGridService();
-
   ScreenType? _currentScreenType;
 
-  /// Sets the current screen type.
+  /// Sets the current screen type from the `sizer` package.
   ///
-  /// This method is typically called by a widget like [ResponsiveScreenTypeProvider]
-  /// that detects screen size changes.
-  /// [screenType] is the screen type to set, from the `sizer` package.
+  /// This method is typically called by [ResponsiveScreenInitializer].
   void setScreenType(ScreenType screenType) {
     _currentScreenType = screenType;
   }
+
+  /// Gets the current screen type.
+  ScreenType? get screenType => _currentScreenType;
 
   /// Gets the responsive margin based on the current screen type.
   /// Defaults to [mobileMargin] if the screen type is not set.
@@ -143,40 +140,5 @@ class ResponsiveGridService {
       ScreenType.desktop => desktop,
       null => mobile,
     };
-  }
-}
-
-/// A widget that provides the current [ScreenType] from `sizer` to the [responsiveGridService]
-/// and then builds its UI using the [builder] callback.
-///
-/// This widget should be placed high in the widget tree, typically above any widgets
-/// that need access to responsive grid values through [responsiveGridService].
-class ResponsiveScreenTypeProvider extends StatelessWidget {
-  /// Creates a ResponsiveScreenTypeProvider.
-  ///
-  /// The [builder] is called with the current [BuildContext], [Orientation],
-  /// and [ScreenType].
-  const ResponsiveScreenTypeProvider({super.key, required this.builder});
-
-  /// A builder function that receives the context, orientation, and screen type.
-  final Widget Function(
-    BuildContext context,
-    Orientation orientation,
-    ScreenType screenType,
-  )
-  builder;
-
-  @override
-  Widget build(BuildContext context) {
-    return Sizer(
-      // Uses desktopBreakpointConstant from responsive.dart for Sizer's tablet threshold
-      maxTabletWidth: desktopBreakpointConstant,
-      builder: (context, orientation, screenType) {
-        // Update the service with the current screen type
-        responsiveGridService.setScreenType(screenType);
-        // Call the user-provided builder
-        return builder(context, orientation, screenType);
-      },
-    );
   }
 }

@@ -136,4 +136,28 @@ class ResponsiveGridService {
       null => mobile,
     };
   }
+
+  /// Checks if the current screen type is mobile.
+  ///
+  /// Returns true if the screen type is [ScreenType.mobile], false otherwise.
+  ///
+  bool isMobile() {
+    return screenType == ScreenType.mobile;
+  }
+
+  /// Checks if the current screen type is tablet.
+  ///
+  /// Returns true if the screen type is [ScreenType.tablet], false otherwise.
+  ///
+  bool isTablet() {
+    return screenType == ScreenType.tablet;
+  }
+
+  /// Checks if the current screen type is desktop.
+  ///
+  /// Returns true if the screen type is [ScreenType.desktop], false otherwise. 
+  /// 
+  bool isDesktop() {
+    return screenType == ScreenType.desktop;
+  }
 }

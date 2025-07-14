@@ -1,7 +1,15 @@
 ## 0.0.3
 
-* Updated documentation and repository links.
-* Standardized package name to `flutter_adaptive_layout_kit`.
+* **New Feature**: Added `ResponsiveFlowLayout` widget for creating adaptive grid layouts that automatically arrange items in rows while respecting minimum and maximum width constraints.
+* **New Feature**: Added `FlowItem` class to define flexible layout items with configurable width boundaries.
+* **New Feature**: Added alignment enums `HorizontalFlowAxisAlignment` and `VerticalFlowAxisAlignment` for precise layout control.
+* **New Feature**: Added convenience methods `isMobile()`, `isTablet()`, and `isDesktop()` to `ResponsiveGridService` for easier screen type checking.
+* **Improvement**: Enhanced global context management with better error handling and initialization validation.
+* **Improvement**: Optimized import statements across all library files to use relative imports and reduce circular dependencies.
+* **Improvement**: Updated package description to include responsive flow layouts.
+* **Documentation**: Added comprehensive examples and documentation for the new ResponsiveFlowLayout system.
+* **Code Organization**: Separated FlowItem and alignment enums into dedicated files for better maintainability.
+* **Export Updates**: Updated main library exports to include all new ResponsiveFlowLayout components.
 
 ## 0.0.2
 

@@ -1,1 +1,11 @@
-docs: update documentation and repository links
+feat: Release v0.0.3 with ResponsiveFlowLayout and enhancements
+
+- Add ResponsiveFlowLayout widget for adaptive grid layouts
+- Add FlowItem class with configurable width boundaries  
+- Add HorizontalFlowAxisAlignment and VerticalFlowAxisAlignment enums
+- Add convenience methods isMobile(), isTablet(), isDesktop() to ResponsiveGridService
+- Enhance global context management with better error handling
+- Optimize import statements to use relative imports
+- Update package description to include responsive flow layouts
+- Improve code organization with dedicated files for components
+- Add comprehensive documentation and examples

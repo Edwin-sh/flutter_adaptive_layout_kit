@@ -1,4 +1,4 @@
-# flutter_responsive_ui
+# flutter_adaptive_layout_kit
 
 A Flutter library for creating adaptive layouts and responsive UIs with ease. This package provides a set of widgets and utilities to help you adapt your application's layout and styles to different screen sizes, including mobile, tablet, and desktop.
 
@@ -29,11 +29,11 @@ A Flutter library for creating adaptive layouts and responsive UIs with ease. Th
 
 ### Installation
 
-Add `flutter_responsive_ui` to your `pubspec.yaml` file:
+Add `flutter_adaptive_layout_kit` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_responsive_ui: ^0.0.2 # Replace with the latest version
+  flutter_adaptive_layout_kit: ^0.0.2 # Replace with the latest version
 ```
 
 Then, run `flutter pub get` in your terminal.
@@ -49,7 +49,7 @@ To enable screen type detection and make responsive grid values available, wrap 
 ```dart
 // main.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/flutter_responsive_ui.dart'; 
+import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart'; 
 
 void main() {
   runApp(MyApp());
@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
 ```dart
 // my_home_page.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -112,7 +112,7 @@ You can access responsive spacing values and other properties directly from the 
 ```dart
 // my_content_widget.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
 class MyContent extends StatelessWidget {
   @override
@@ -162,7 +162,7 @@ Ensure `MyContent` is a descendant of `ResponsiveScreenInitializer` to use `resp
 ```dart
 // responsive_flow_example.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
 class ResponsiveFlowExample extends StatelessWidget {
   @override

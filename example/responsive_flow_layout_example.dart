@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_ui/flutter_responsive_ui.dart';
+import 'package:flutter_adaptive_layout_kit/flutter_adaptive_layout_kit.dart';
 
 /// Ejemplo de uso del ResponsiveFlowLayout
 class ResponsiveFlowLayoutExample extends StatelessWidget {

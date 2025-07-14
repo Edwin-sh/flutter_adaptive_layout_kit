@@ -37,19 +37,19 @@ class ResponsiveText extends StatelessWidget {
     TextWidthBasis? textWidthBasis,
     TextHeightBehavior? textHeightBehavior,
     Color? selectionColor,
-  })  : _text = text,
-        _style = style,
-        _textAlign = textAlign,
-        _textDirection = textDirection,
-        _locale = locale,
-        _softWrap = softWrap,
-        _overflow = overflow,
-        _textScaler = textScaler,
-        _maxLines = maxLines,
-        _semanticsLabel = semanticsLabel,
-        _textWidthBasis = textWidthBasis,
-        _textHeightBehavior = textHeightBehavior,
-        _selectionColor = selectionColor;
+  }) : _text = text,
+       _style = style,
+       _textAlign = textAlign,
+       _textDirection = textDirection,
+       _locale = locale,
+       _softWrap = softWrap,
+       _overflow = overflow,
+       _textScaler = textScaler,
+       _maxLines = maxLines,
+       _semanticsLabel = semanticsLabel,
+       _textWidthBasis = textWidthBasis,
+       _textHeightBehavior = textHeightBehavior,
+       _selectionColor = selectionColor;
 
   @override
   Widget build(BuildContext context) {

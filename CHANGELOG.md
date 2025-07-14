@@ -1,4 +1,4 @@
-## 0.0.3
+# 0.0.3
 
 * **New Feature**: Added `ResponsiveFlowLayout` widget for creating adaptive grid layouts that automatically arrange items in rows while respecting minimum and maximum width constraints.
 * **New Feature**: Added `FlowItem` class to define flexible layout items with configurable width boundaries.
@@ -27,4 +27,4 @@
 * Provides `ResponsiveContextExtension` for easy screen size checks.
 * Introduces `ResponsiveGridService` and `ResponsiveScreenTypeProvider` for responsive spacing and grid management.
 * Features `ResponsiveText` and `ResponsiveTextStyle` for text that adapts its style to different screen breakpoints.
-* Basic example and documentation updated to reflect the new package name and structure.
+* Basic example and documentation updated to reflect the new package name and structure

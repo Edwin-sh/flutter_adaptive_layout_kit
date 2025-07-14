@@ -155,8 +155,8 @@ class ResponsiveGridService {
 
   /// Checks if the current screen type is desktop.
   ///
-  /// Returns true if the screen type is [ScreenType.desktop], false otherwise. 
-  /// 
+  /// Returns true if the screen type is [ScreenType.desktop], false otherwise.
+  ///
   bool isDesktop() {
     return screenType == ScreenType.desktop;
   }

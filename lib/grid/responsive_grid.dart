@@ -1,5 +1,5 @@
 import 'package:sizer/sizer.dart';
-import '_grid_constants.dart';
+import 'grid_constants.dart';
 
 /// A singleton instance of [ResponsiveGridService] for easy access to responsive values.
 ResponsiveGridService responsiveGridService = ResponsiveGridService();
@@ -19,102 +19,102 @@ class ResponsiveGridService {
   }
 
   /// Gets the responsive margin based on the current screen type.
-  /// Defaults to [mobileMargin] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileMargin] if the screen type is not set.
   double get margin {
     return switch (screenType) {
-      ScreenType.mobile => mobileMargin,
-      ScreenType.tablet => tabletMargin,
-      ScreenType.desktop => desktopMargin,
-      null => mobileMargin,
+      ScreenType.mobile => GridConstants.mobileMargin,
+      ScreenType.tablet => GridConstants.tabletMargin,
+      ScreenType.desktop => GridConstants.desktopMargin,
+      null => GridConstants.mobileMargin,
     };
   }
 
   /// Gets the responsive gutter (spacing between grid items) based on the current screen type.
-  /// Defaults to [mobileGutter] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileGutter] if the screen type is not set.
   double get gutter {
     return switch (screenType) {
-      ScreenType.mobile => mobileGutter,
-      ScreenType.tablet => tabletGutter,
-      ScreenType.desktop => desktopGutter,
-      null => mobileGutter,
+      ScreenType.mobile => GridConstants.mobileGutter,
+      ScreenType.tablet => GridConstants.tabletGutter,
+      ScreenType.desktop => GridConstants.desktopGutter,
+      null => GridConstants.mobileGutter,
     };
   }
 
   /// Gets the responsive maximum width for a widget based on the current screen type.
-  /// Defaults to [mobileWidgetMaxWidth] if the screen type is not set.
+  /// For tablets, it uses dynamic logic based on the stored context.
+  /// Defaults to [GridConstants.mobileWidgetMaxWidth] if the screen type is not set.
   double get maxWidgetWidth {
     return switch (screenType) {
-      ScreenType.mobile => mobileWidgetMaxWidth,
-      ScreenType.tablet =>
-        desktopWidgetMaxWidth, // Uses desktopWidgetMaxWidth for tablets as well
-      ScreenType.desktop => desktopWidgetMaxWidth,
-      null => mobileWidgetMaxWidth,
+      ScreenType.mobile => GridConstants.mobileWidgetMaxWidth,
+      ScreenType.tablet => GridConstants.getTabletWidgetMaxWidth(),
+      ScreenType.desktop => GridConstants.desktopWidgetMaxWidth,
+      null => GridConstants.mobileWidgetMaxWidth,
     };
   }
 
   /// Gets the responsive XS (Extra Small) size based on the current screen type.
-  /// Defaults to [mobileXS] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileXS] if the screen type is not set.
   double get xs {
     return switch (screenType) {
-      ScreenType.mobile => mobileXS,
-      ScreenType.tablet => tabletXS,
-      ScreenType.desktop => desktopXS,
-      null => mobileXS,
+      ScreenType.mobile => GridConstants.mobileXS,
+      ScreenType.tablet => GridConstants.tabletXS,
+      ScreenType.desktop => GridConstants.desktopXS,
+      null => GridConstants.mobileXS,
     };
   }
 
   /// Gets the responsive S (Small) size based on the current screen type.
-  /// Defaults to [mobileS] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileS] if the screen type is not set.
   double get s {
     return switch (screenType) {
-      ScreenType.mobile => mobileS,
-      ScreenType.tablet => tabletS,
-      ScreenType.desktop => desktopS,
-      null => mobileS,
+      ScreenType.mobile => GridConstants.mobileS,
+      ScreenType.tablet => GridConstants.tabletS,
+      ScreenType.desktop => GridConstants.desktopS,
+      null => GridConstants.mobileS,
     };
   }
 
   /// Gets the responsive M (Medium) size based on the current screen type.
-  /// Defaults to [mobileM] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileM] if the screen type is not set.
   double get m {
     return switch (screenType) {
-      ScreenType.mobile => mobileM,
-      ScreenType.tablet => tabletM,
-      ScreenType.desktop => desktopM,
-      null => mobileM,
+      ScreenType.mobile => GridConstants.mobileM,
+      ScreenType.tablet => GridConstants.tabletM,
+      ScreenType.desktop => GridConstants.desktopM,
+      null => GridConstants.mobileM,
     };
   }
 
   /// Gets the responsive L (Large) size based on the current screen type.
-  /// Defaults to [mobileL] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileL] if the screen type is not set.
   double get l {
     return switch (screenType) {
-      ScreenType.mobile => mobileL,
-      ScreenType.tablet => tabletL,
-      ScreenType.desktop => desktopL,
-      null => mobileL,
+      ScreenType.mobile => GridConstants.mobileL,
+      ScreenType.tablet => GridConstants.tabletL,
+      ScreenType.desktop => GridConstants.desktopL,
+      null => GridConstants.mobileL,
     };
   }
 
   /// Gets the responsive XL (Extra Large) size based on the current screen type.
-  /// Defaults to [mobileXL] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileXL] if the screen type is not set.
   double get xl {
     return switch (screenType) {
-      ScreenType.mobile => mobileXL,
-      ScreenType.tablet => tabletXL,
-      ScreenType.desktop => desktopXL,
-      null => mobileXL,
+      ScreenType.mobile => GridConstants.mobileXL,
+      ScreenType.tablet => GridConstants.tabletXL,
+      ScreenType.desktop => GridConstants.desktopXL,
+      null => GridConstants.mobileXL,
     };
   }
 
   /// Gets the responsive XXL (Extra Extra Large) size based on the current screen type.
-  /// Defaults to [mobileXXL] if the screen type is not set.
+  /// Defaults to [GridConstants.mobileXXL] if the screen type is not set.
   double get xxl {
     return switch (screenType) {
-      ScreenType.mobile => mobileXXL,
-      ScreenType.tablet => tabletXXL,
-      ScreenType.desktop => desktopXXL,
-      null => mobileXXL,
+      ScreenType.mobile => GridConstants.mobileXXL,
+      ScreenType.tablet => GridConstants.tabletXXL,
+      ScreenType.desktop => GridConstants.desktopXXL,
+      null => GridConstants.mobileXXL,
     };
   }
 

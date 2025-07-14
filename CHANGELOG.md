@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Updated documentation and repository links.
+* Standardized package name to `flutter_responsive_ui`.
+
 ## 0.0.2
 
 * **Breaking Change**: Refactored the API to centralize screen type logic in `ResponsiveGridService`.
@@ -8,10 +13,10 @@
 
 ## 0.0.1
 
-* Initial release of `flutter_adaptive_layout_kit`.
+* Initial release of `flutter_responsive_ui`.
 * Clarified that `ResponsiveScreenTypeProvider` handles `Sizer` initialization internally.
 * Includes `ResponsiveLayoutBuilder` for adaptive layouts based on screen size.
 * Provides `ResponsiveContextExtension` for easy screen size checks.
-* Introduces `ResponsiveGridService` and `ResponsiveScreenTypeProvider` for responsive spacing and grid management, powered by the `sizer` package.
+* Introduces `ResponsiveGridService` and `ResponsiveScreenTypeProvider` for responsive spacing and grid management.
 * Features `ResponsiveText` and `ResponsiveTextStyle` for text that adapts its style to different screen breakpoints.
 * Basic example and documentation updated to reflect the new package name and structure.

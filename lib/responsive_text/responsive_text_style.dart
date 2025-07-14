@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_layout_kit/grid/responsive_grid.dart';
 import 'package:sizer/sizer.dart';
+
+import '../grid/responsive_grid.dart';
 
 /// Defines a set of [TextStyle]s for different screen sizes.
 ///
@@ -15,9 +16,9 @@ class ResponsiveTextStyle {
     required TextStyle? mobile,
     TextStyle? tablet,
     required TextStyle? desktop,
-  })  : _mobile = mobile ?? _defaultTextStyle,
-        _tablet = tablet,
-        _desktop = desktop ?? _defaultTextStyle;
+  }) : _mobile = mobile ?? _defaultTextStyle,
+       _tablet = tablet,
+       _desktop = desktop ?? _defaultTextStyle;
 
   final TextStyle _mobile;
   final TextStyle? _tablet;

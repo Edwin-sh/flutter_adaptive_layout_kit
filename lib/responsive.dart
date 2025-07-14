@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_layout_kit/grid/responsive_grid.dart';
 import 'package:sizer/sizer.dart';
+
+import '_global_context.dart';
+import 'grid/responsive_grid.dart';
 
 // Breakpoint definitions
 const double mobileBreakpoint = 600;
@@ -35,19 +37,12 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, screenType) {
-        responsiveGridService.setScreenType(screenType);
-        switch (screenType) {
-          case ScreenType.desktop:
-            return desktop;
-          case ScreenType.tablet:
-            return tablet ?? mobile;
-          case ScreenType.mobile:
-            return mobile;
-        }
-      },
-    );
+    return switch (responsiveGridService.screenType) {
+      ScreenType.desktop => desktop,
+      ScreenType.tablet => tablet ?? mobile,
+      ScreenType.mobile => mobile,
+      null => mobile, // Default to mobile if screen type is not set
+    };
   }
 }
 
@@ -58,7 +53,12 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
 /// to all descendant widgets.
 class ResponsiveScreenInitializer extends StatelessWidget {
   /// A builder function that receives the context, orientation, and screen type.
-  final Widget Function(BuildContext context, Orientation orientation, ScreenType screenType) builder;
+  final Widget Function(
+    BuildContext context,
+    Orientation orientation,
+    ScreenType screenType,
+  )
+  builder;
 
   /// Creates a [ResponsiveScreenInitializer].
   const ResponsiveScreenInitializer({super.key, required this.builder});
@@ -69,6 +69,7 @@ class ResponsiveScreenInitializer extends StatelessWidget {
       maxTabletWidth: desktopBreakpointConstant,
       builder: (context, orientation, screenType) {
         responsiveGridService.setScreenType(screenType);
+        GlobalContext.setContext(context);
         return builder(context, orientation, screenType);
       },
     );

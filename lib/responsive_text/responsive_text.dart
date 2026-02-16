@@ -6,8 +6,8 @@ import 'responsive_text_style.dart';
 ///
 /// The actual [TextStyle] applied to the text will change based on the
 /// current screen size, as determined by the [ResponsiveTextStyle.getResponsiveTextStyle] method.
-class ResponsiveText extends StatelessWidget {
-  final String _text;
+class ResponsiveText extends Text {
+  final String _data;
   final ResponsiveTextStyle _style;
   final TextAlign _textAlign;
   final TextDirection? _textDirection;
@@ -22,9 +22,8 @@ class ResponsiveText extends StatelessWidget {
   final Color? _selectionColor;
 
   /// Creates a [ResponsiveText] widget.
-  const ResponsiveText({
+  const ResponsiveText(this._data, {
     super.key,
-    required String text,
     required ResponsiveTextStyle style,
     TextAlign textAlign = TextAlign.left,
     TextDirection? textDirection,
@@ -37,8 +36,7 @@ class ResponsiveText extends StatelessWidget {
     TextWidthBasis? textWidthBasis,
     TextHeightBehavior? textHeightBehavior,
     Color? selectionColor,
-  }) : _text = text,
-       _style = style,
+  }) :       _style = style,
        _textAlign = textAlign,
        _textDirection = textDirection,
        _locale = locale,
@@ -49,12 +47,12 @@ class ResponsiveText extends StatelessWidget {
        _semanticsLabel = semanticsLabel,
        _textWidthBasis = textWidthBasis,
        _textHeightBehavior = textHeightBehavior,
-       _selectionColor = selectionColor;
+       _selectionColor = selectionColor, super(_data);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      _text,
+      _data,
       textAlign: _textAlign,
       style: _style.getResponsiveTextStyle(),
       textDirection: _textDirection,
